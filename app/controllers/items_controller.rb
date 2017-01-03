@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
         keyword: params[:q],
         imageFlag: 1,
       )
+      # @itemsに商品検索結果を
       @items = response.first(20)
     end
   end
