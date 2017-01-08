@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def new
     
     if params[:q]
+      # imageFlag 1 なら画像あり
       response = RakutenWebService::Ichiba::Item.search(
         keyword: params[:q],
         imageFlag: 1,
@@ -12,6 +13,7 @@ class ItemsController < ApplicationController
       # @itemsに商品検索結果を
       @items = response.first(20)
     end
+    
   end
 
   def show

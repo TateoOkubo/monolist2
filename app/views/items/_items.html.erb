@@ -5,8 +5,14 @@
         <div class="image">
           <div class="img-wrap">
             <% #TODO 商品画像 %> 
-            <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', ''), 
-                          alt: item['itemName']) %>
+            <% #imageFlagを確認する %>
+            <% if item['imageFlag'] == 1 %>
+              <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', ''), 
+                            alt: item['itemName']) %>
+            <% else %>
+              <% # No image %>
+              <%= image_tag('no-image.png', alt: item['itemName']) %>
+            <% end %>
           </div>
         </div>
         <div class="detail">
