@@ -1,17 +1,22 @@
 <div class="action">
-  <% if current_user.want? item %>
-    <%= render 'items/unwant' , item: item %>
-  <% else %>
-    <%= render 'items/want' , item: item %>
-  <% end %> 
+  <% if logged_in? %>
+    <% if current_user.want? item %>
+      <%= render 'items/unwant' , item: item %>
+    <% else %>
+      <%= render 'items/want' , item: item %>
+    <% end %> 
 
-  <% if current_user.have? item %>
-    <%= render 'items/unhave' , item: item %>
-  <% else %>
-    <%= render 'items/have' , item: item %>
+    <% if current_user.have? item %>
+      <%= render 'items/unhave' , item: item %>
+    <% else %>
+      <%= render 'items/have' , item: item %>
+    <% end %>
   <% end %>
-
+  
   <% unless current_page?(item) %>
+    
     <%= link_to "詳細" , item , class: "btn btn-info btn-sm" %>
   <% end %>
+  
+  <%# binding.pry %>
 </div>
