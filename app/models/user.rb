@@ -46,12 +46,15 @@ class User < ActiveRecord::Base
   ## TODO 実装
   # itemをhaveする
   def have(item)
-    have_items.create(item_id: item.id)
+    #binding.pry
+    # あればfind, 無ければcreateする．連打とかされた時のエラー回収
+    haves.find_or_create_by(item_id: item.id)
   end
 
   # itemのhaveを解除する
   def unhave(item)
-    have_items.find_by(item_id: item.id).destroy
+    have = haves.find_by(item_id: item.id)
+    have.destroy if have
   end
 
   # itemをhaveしている場合true、haveしていない場合falseを返す
@@ -61,12 +64,14 @@ class User < ActiveRecord::Base
   
   # itemをwantする
   def want(item)
-    want_items.create(item_id: item.id)
+    #binding.pry
+    wants.find_or_create_by(item_id: item.id)
   end
 
   # itemのwantを解除する
   def unwant(item)
-    want_items.find_by(item_id: item.id).destroy
+    want = wants.find_by(item_id: item.id)
+    want.destroy if want
   end
 
   #	itemをwantしている場合true、wantしていない場合falseを返す
