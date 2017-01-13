@@ -8,7 +8,7 @@ class RankingController < ApplicationController
   end
 
   def want
-    @title = 'Want ランキング'
+    @title = 'Wantランキング'
     #Want.group(:item_id).count()でitem_idごとの数を検索可能
     # limit(最大取得行数)でレコード件数を指定
     want_rank =  Want.group(:item_id).order('count_all desc').limit(10).count.keys
