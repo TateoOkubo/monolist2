@@ -1,4 +1,7 @@
 <h1><%= @title %></h1>
 
-<%= render 'items/list', items: @items %>
+<%= render 'items/list', items: @items, ranks: @ranks %>
+
+<%= debug @items %>
+<%= debug @ranks %>
 

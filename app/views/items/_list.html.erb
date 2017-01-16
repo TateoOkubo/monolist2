@@ -14,7 +14,7 @@
         <div class="detail">
           <p class="title">
             <% if params[:controller] == 'ranking' %>
-              【<%= index %>位】
+              【<%= index %>位(<%= ranks[index - 1] %> 件)】
               <br>
             <% end %>
             <%= item.title %>
